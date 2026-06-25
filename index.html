@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Car Service</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- PAGE LOADER -->
+  <div id="loader" class="loader-wrapper">
+    <div class="loader-content">
+      <img src="images/Car moving.gif" alt="Loading My Mechanic...">
+      <p>Loading My Mechanic...</p>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+   <header class="header">
+  <div class="logo">
+    <img src="images/logo.png" alt="My Mechanic Logo" class="car-icon">
+    <span>My Mechanic</span>
+  </div>
+
+  <nav class="nav">
+    
+  </nav>
+
+ 
+</header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+
+    <!-- LEFT IMAGE -->
+    <div class="hero-image">
+      <img src="images/hero-car.jpg" alt="Car Service">
+    </div>
+
+    <!-- RIGHT FORM CARD -->
+    <div class="hero-form">
+      <h1>Experience The Best <br> Car Services In Gurugram</h1>
+      <p>Get instant quotes for your car service</p>
+
+      <form>
+      
+
+<select id="serviceCategory">
+  <option value="">SELECT SERVICE CATEGORY</option>
+  <option value="periodic">Periodic Services</option>
+  <option value="ac">AC Services</option>
+  <option value="spa">Car Spa & Cleaning</option>
+  <option value="denting">Denting & Painting</option>
+  <option value="battery">Battery Services</option>
+  <option value="tyre">Tyre Services</option>
+  <option value="detailing">Detailing Services</option>
+  <option value="insurance">Insurance Claims</option>
+  <option value="inspection">Car Inspections</option>
+  <option value="windshield">Windshields & Glass</option>
+</select>
+
+<select id="serviceType">
+  <option value="">SELECT SERVICE</option>
+  <option value="basic">Basic Service</option>
+  <option value="standard">Standard Service</option>
+  <option value="comprehensive">Comprehensive Service</option>
+  <option value="ac-gas">AC Gas Refill</option>
+  <option value="ac-repair">AC Compressor Repair</option>
+  <option value="ac-gas-refill">AC Gas Top-Up</option>
+  <option value="interior">Interior Deep Cleaning</option>
+  <option value="exterior">Exterior Wash & Wax</option>
+  <option value="full-spa">Full Car Spa</option>
+  <option value="full-paint">Full Body Paint</option>
+  <option value="scratch">Scratch & Dent Removal</option>
+  <option value="battery-replace">Battery Replacement</option>
+  <option value="battery-check">Battery Health Check</option>
+  <option value="tyre-replace">Tyre Replacement</option>
+  <option value="alignment">Wheel Alignment</option>
+  <option value="ceramic">Ceramic Coating</option>
+  <option value="ppf">Paint Protection Film</option>
+  <option value="inspection">Car Inspection</option>
+</select>
+
+
+        <select id="carSelect">
+  <option value="">SELECT YOUR CAR</option>
+  <option>Maruti Suzuki</option>
+  <option>Hyundai</option>
+  <option>Honda</option>
+  <option>Toyota</option>
+  <option>Tata</option>
+  <option>Mahindra</option>
+  <option>Kia</option>
+  <option>BMW</option>
+  <option>Audi</option>
+</select>
+
+        <input type="tel" placeholder="ENTER MOBILE NUMBER" />
+
+        <button type="submit" class="primary-btn">
+          Inquire Now
+        </button>
+      </form>
+
+      <div class="stats">
+        <div>
+          <h3>⭐ 4.0/5</h3>
+          <span>Based on 150000+ Reviews</span>
+        </div>
+
+        <div>
+          <h3>2 Million+</h3>
+          <span>Happy Customers</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SERVICES SECTION -->
+<!-- SERVICES SECTION -->
+<!-- <section class="services">
+  <div class="services-grid">
+
+    <div class="service-card">
+      <img src="images/car-service.png" alt="">
+      <h4>Car Services</h4>
+    </div>
+
+    <div class="service-card">
+      <img src="images/ac-service.png" alt="">
+      <h4>AC Service & Repair</h4>
+    </div>
+
+    <div class="service-card">
+      <img src="images/battery.png" alt="">
+      <h4>Battery Replacement</h4>
+    </div>
+
+    <div class="service-card">
+      <img src="images/tyre.png" alt="">
+      <h4>Tyre Replacement</h4>
+    </div>
+
+  </div>
+</section> -->
+
+<!-- SCROLL NAVBAR -->
+<!-- ================= FIXED SCROLL NAV ================= -->
+
+<div class="scroll-nav-wrapper">
+
+  <div class="scroll-nav" id="scrollNav">
+
+    <!-- LEFT ARROW -->
+    <button class="nav-arrow left" id="navLeft">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+
+    <!-- TABS -->
+    <div class="scroll-container" id="scrollContainer">
+
+      <a href="#services" class="scroll-link active">Our Services</a>
+      <a href="#custom" class="scroll-link">Curated Custom Service</a>
+      <a href="#summer" class="scroll-link">Summer Services</a>
+      <a href="#how-it-works" class="scroll-link">How MyMechanic Works?</a>
+      <a href="#reviews" class="scroll-link">Reviews</a>
+      <a href="#price-list" class="scroll-link">Price list</a>
+
+      <span class="scroll-indicator" id="scrollIndicator"></span>
+
+    </div>
+
+    <!-- RIGHT ARROW -->
+    <button class="nav-arrow right" id="navRight">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+  </div>
+
+</div>
+
+<!-- AVAILABLE SERVICES SECTION -->
+<section id="services" class="available-services">
+
+  <div class="container">
+    <h2>Car Services Available In Gurugram</h2>
+    <p class="section-subtitle">
+      Choose from a wide assortment of car services including servicing,
+      AC repair, wheel care, detailing and much more!
+    </p>
+
+    <div class="available-grid">
+
+      <div class="available-card">
+        <img src="images/car-services.png" alt="">
+        <h4>Car Services</h4>
+      </div>
+
+      <div class="available-card">
+        <img src="images/ac-repair.png" alt="">
+        <h4>AC Service & Repair</h4>
+      </div>
+
+      <div class="available-card">
+        <img src="images/batteries.png" alt="">
+        <h4>Batteries</h4>
+      </div>
+
+      <div class="available-card">
+        <img src="images/tyre-v3.png" alt="">
+        <h4>Tyres & Wheel Care</h4>
+      </div>
+
+      <div class="available-card">
+        <img src="images/denting.png" alt="">
+        <h4>Denting & Painting</h4>
+      </div>
+
+      <div class="available-card">
+        <img src="images/detailing.png" alt="">
+        <h4>Detailing Services</h4>
+      </div>
+
+      <div class="available-card">
+        <img src="images/spa-cleaning.png" alt="">
+        <h4>Car Spa & Cleaning</h4>
+      </div>
+
+      <div class="available-card">
+        <img src="images/windshield.png" alt="">
+        <h4>Windshield & Lights</h4>
+      </div>
+
+      <div class="available-card">
+        <img src="images/suspension.png" alt="">
+        <h4>Suspension & Fitments</h4>
+      </div>
+
+      <div class="available-card">
+        <img src="images/insurance-v3.png" alt="">
+        <h4>Insurance Claims</h4>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- CURATED CUSTOM SERVICES -->
+<section id="custom" class="curated-section">
+
+  <div class="section-header">
+    <div class="red-line"></div>
+    <h2>Curated Custom Services</h2>
+  </div>
+
+  <div class="curated-wrapper">
+
+    <button class="curated-arrow left" id="curatedLeft">&#10094;</button>
+
+    <div class="curated-container" id="curatedContainer">
+
+      <div class="curated-item">
+        <div class="curated-img-wrap">
+          <span class="curated-badge sale">SALE</span>
+          <img src="images/liveguard-battery-140.png" alt="Batteries">
+        </div>
+        <p>Batteries</p>
+      </div>
+
+      <div class="curated-item">
+        <div class="curated-img-wrap">
+          <img src="images/xxhdpi (10).png" alt="Brakes">
+        </div>
+        <p>Brakes</p>
+      </div>
+
+      <div class="curated-item">
+        <div class="curated-img-wrap">
+          <img src="images/xxhdpi (9).png" alt="AC Parts">
+        </div>
+        <p>AC Parts</p>
+      </div>
+
+      <div class="curated-item">
+        <div class="curated-img-wrap">
+          <span class="curated-badge new">NEW</span>
+          <img src="images/xxhdpi (8).png" alt="Clutch">
+        </div>
+        <p>Clutch</p>
+      </div>
+
+      <div class="curated-item">
+        <div class="curated-img-wrap">
+          <span class="curated-badge sale">SALE</span>
+          <img src="images/xxhdpi (7).png" alt="Tyres">
+        </div>
+        <p>Tyres</p>
+      </div>
+
+      <div class="curated-item">
+        <div class="curated-img-wrap">
+          <img src="images/xxhdpi (5).png" alt="Suspension">
+        </div>
+        <p>Suspension</p>
+      </div>
+
+      <div class="curated-item">
+        <div class="curated-img-wrap">
+          <img src="images/xxhdpi (6).png" alt="Lights">
+        </div>
+        <p>Lights</p>
+      </div>
+
+      <div class="curated-item">
+        <div class="curated-img-wrap">
+          <img src="images/xxhdpi (3).png" alt="Glasses">
+        </div>
+        <p>Glasses</p>
+      </div>
+
+      <div class="curated-item">
+        <div class="curated-img-wrap">
+          <img src="images/xxhdpi (2).png" alt="Car Spa">
+        </div>
+        <p>Car Spa</p>
+      </div>
+
+      <div class="curated-item">
+        <div class="curated-img-wrap">
+          <img src="images/xxhdpi (1).png" alt="Car Detailing">
+        </div>
+        <p>Car Detailing</p>
+      </div>
+
+      <div class="curated-item">
+        <div class="curated-img-wrap">
+          <img src="images/xxhdpi.png" alt="Side Mirror">
+        </div>
+        <p>Side Mirror</p>
+      </div>
+
+      <div class="curated-item">
+        <div class="curated-img-wrap">
+          <img src="images/xxhdpi (4).png" alt="Body Parts">
+        </div>
+        <p>Body Parts</p>
+      </div>
+
+    </div>
+
+    <button class="curated-arrow right" id="curatedRight">&#10095;</button>
+
+  </div>
+</section>
+
+
+<!-- SUMMER SECTION -->
+<section id="summer" class="summer-section">
+
+  <div class="section-header">
+    <div class="red-line"></div>
+    <h2>Get Summer Ready With My Mechanic</h2>
+  </div>
+
+  <div class="summer-slider">
+
+    <!-- LEFT ARROW -->
+    <button class="summer-arrow left" id="summerLeft">
+      <img src="images/a1.png" alt="">
+    </button>
+
+    <!-- SLIDER -->
+    <div class="summer-container" id="summerContainer">
+
+      <div class="summer-card">
+        <img src="images/Front Bumper Paint - Smart Object Group.jpeg" alt="">
+        <h4>Front Bumper Paint</h4>
+      </div>
+
+      <div class="summer-card">
+        <img src="images/Rubbing & Polishing - Smart Object Group.png" alt="">
+        <h4>Rubbing & Polishing</h4>
+      </div>
+
+      <div class="summer-card">
+        <img src="images/Deep All Round Spa - Smart Object Group.png" alt="">
+        <h4>Deep All Round Spa</h4>
+      </div>
+
+      <div class="summer-card">
+        <img src="images/Standard Service - Smart Object Group.png" alt="">
+        <h4>Periodic Service</h4>
+      </div>
+
+    </div>
+
+    <!-- RIGHT ARROW -->
+    <button class="summer-arrow right" id="summerRight">
+      <img src="images/a1.png" alt="">
+    </button>
+
+  </div>
+
+</section>
+
+<!-- PROMO SLIDER SECTION -->
+<!-- PROMO BANNER SLIDER -->
+<section class="banner-section">
+
+  <div class="banner-slider" id="bannerSlider">
+
+    <div class="banner-track" id="bannerTrack">
+
+      <div class="banner-slide">
+        <img src="images/312.png" alt="">
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- DOTS -->
+  <div class="banner-dots" id="bannerDots"></div>
+
+</section>
+
+<!-- ================= GUARANTEE SECTION ================= -->
+
+<section class="guarantee-section">
+
+  <div class="section-header">
+    <div class="red-line"></div>
+    <h2>My Mechanic Guarantee</h2>
+  </div>
+
+  <div class="guarantee-grid">
+
+    <div class="guarantee-box g1">Free Pickup Drop</div>
+    <div class="guarantee-box g2">Genuine Parts</div>
+    <div class="guarantee-box g3">30 Days Warranty</div>
+    <div class="guarantee-box g4">Affordable Prices</div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section id="how-it-works" class="works-section">
+
+  <div class="section-header">
+    <div class="red-line"></div>
+    <h2>How My Mechanic works?</h2>
+  </div>
+
+  <div class="works-container">
+
+    <!-- STEP 1 -->
+    <div class="work-row">
+      <div class="work-left">
+        <div class="step-box">1</div>
+        <div class="vertical-line"></div>
+      </div>
+
+      <div class="work-content">
+        <h3>Select The Perfect Car Service</h3>
+        <p>From My Mechanic's broad portfolio of services</p>
+      </div>
+
+      <div class="work-image">
+        <img src="images/work1.png" alt="">
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="work-row">
+      <div class="work-left">
+        <div class="step-box">2</div>
+        <div class="vertical-line"></div>
+      </div>
+
+      <div class="work-content">
+        <h3>Schedule Free Doorstep Pick-up</h3>
+        <p>We offer free pick up and drop for all services booked</p>
+      </div>
+
+      <div class="work-image">
+        <img src="images/work2.png" alt="">
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="work-row">
+      <div class="work-left">
+        <div class="step-box">3</div>
+        <div class="vertical-line"></div>
+      </div>
+
+      <div class="work-content">
+        <h3>Track Your Car Service Real-Time</h3>
+        <p>We will take care of everything from here!</p>
+      </div>
+
+      <div class="work-image">
+        <img src="images/work3.png" alt="">
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="work-row">
+      <div class="work-left">
+        <div class="step-box">4</div>
+        <!-- No vertical line after last step -->
+      </div>
+
+      <div class="work-content">
+        <h3>Earn While We Service</h3>
+        <p>Spread the word! You get Rs.750. Your friends get Rs.750!</p>
+      </div>
+
+      <div class="work-image">
+        <img src="images/work4.png" alt="">
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= VIDEO SECTION ================= -->
+
+<section class="video-section">
+
+  <div class="section-header">
+    <div class="red-line"></div>
+    <h2>How to Book a Service with My Mechanic</h2>
+  </div>
+
+  <div class="video-wrapper">
+    <video src="images/aa1.mp4" autoplay loop muted playsinline></video>
+  </div>
+
+</section>
+
+<!-- ================= RATING & REVIEWS ================= -->
+
+<section id="reviews" class="review-section">
+
+  <!-- STATS ROW -->
+  <div class="review-stats">
+
+    <div class="stat-item">
+      <h3>2 Million+</h3>
+      <p>Happy Customers</p>
+    </div>
+
+    <div class="stat-item">
+      <h3>25 Lacs+</h3>
+      <p>Cars Serviced</p>
+    </div>
+
+    <div class="stat-item">
+      <h3>4.0 ★</h3>
+      <p>Average Rating</p>
+    </div>
+
+    <div class="stat-item">
+      <h3>1000+</h3>
+      <p>Touch Points In India</p>
+    </div>
+
+  </div>
+
+
+  <!-- HEADING -->
+  <div class="section-header">
+    <div class="red-line"></div>
+    <h2>What Car Owners In Gurugram Say</h2>
+  </div>
+
+
+  <!-- REVIEW SLIDER -->
+  <div class="review-slider-wrapper">
+    <div class="review-track" id="reviewTrack">
+
+      <!-- SLIDE 1 -->
+      <div class="review-slide">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="quote">"</div>
+          <h3>Exceptional Service</h3>
+          <p>I got my Polo GT serviced and am extremely happy with the servicing done. There were issues which the authorised service centre of Volkswagen could not fix since past two years and were identified and fixed by My Mechanic team. I also got some body work done for my other vehicle and am extremely happy with the outcome.</p>
+          <div class="review-user">
+            <div class="user-icon google">A</div>
+            <div><strong>Abhishek Parihar</strong><span>Google Review</span></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="quote">"</div>
+          <h3>Transparent &amp; On Time</h3>
+          <p>I recently took my VW Polo for its regular service at My Mechanic and was very impressed with their attention to detail. The mechanic thoroughly inspected the car, identified a minor issue with the brakes, and explained the necessary repairs clearly before proceeding. The price was transparent and within my budget.</p>
+          <div class="review-user">
+            <div class="user-icon google">R</div>
+            <div><strong>Rohan Lilha</strong><span>Google Review</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="review-slide">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="quote">"</div>
+          <h3>Highly Recommended</h3>
+          <p>Rajeev ji was very knowledgeable and resourceful. His mechanic was a brilliant guy and they did a great job changing the clutch plate and repairing the steering assembly of my diesel car. They finished the job in committed time and at a fair price. Would highly recommend My Mechanic for any car repair work. 🙏</p>
+          <div class="review-user">
+            <div class="user-icon google">S</div>
+            <div><strong>Shunyo</strong><span>Google Review</span></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="quote">"</div>
+          <h3>Cordial &amp; Affordable</h3>
+          <p>My Mechanic is a great car service workshop. Owner Rajeev is very cordial and helpful — he provides pickup and drop, his service charges are quite reasonable compared to many service centres, and he deals in all types of cars. All the best!</p>
+          <div class="review-user">
+            <div class="user-icon google">S</div>
+            <div><strong>Seema Joshi</strong><span>Google Review</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="review-slide">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="quote">"</div>
+          <h3>Goes the Extra Mile</h3>
+          <p>Very grateful to Rajeev and his team for arriving at my home at 11pm in rainy conditions and heavy traffic to help fix my faulty brake sensor. Highly recommended if you need automotive assistance anywhere in Delhi-Gurgaon. 🙌</p>
+          <div class="review-user">
+            <div class="user-icon google">A</div>
+            <div><strong>Arjun Thimmaya</strong><span>Google Review</span></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="quote">"</div>
+          <h3>High Quality Work</h3>
+          <p>Very good service centre — the mechanics' work is of high quality. I am satisfied after servicing my Tata Punch. Will definitely come back for future services.</p>
+          <div class="review-user">
+            <div class="user-icon google">S</div>
+            <div><strong>Sujit Mitra</strong><span>Google Review</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DOTS -->
+  <div class="review-dots" id="reviewDots">
+
+  </div><!-- /.review-dots -->
+
+</section>
+
+<!-- ================= ORIGINAL SPARE PARTS ================= -->
+
+<section class="spare-section">
+
+  <div class="section-header">
+    <h2>Original Spare Parts</h2>
+    <p class="section-sub">Extended Warranty with My Mechanic</p>
+  </div>
+
+  <div class="spare-slider">
+
+    <!-- LEFT ARROW -->
+    <button class="spare-arrow left" id="spareLeft">&#10094;</button>
+
+    <!-- LOGO TRACK -->
+    <div class="spare-track-wrapper">
+      <div class="spare-track" id="spareTrack">
+
+        <div class="spare-logo"><img src="images/bosch.jpeg" alt=""></div>
+        <div class="spare-logo"><img src="images/valeo.jpeg" alt=""></div>
+        <div class="spare-logo"><img src="images/mahle.jpeg" alt=""></div>
+        <div class="spare-logo"><img src="images/ntn.jpeg" alt=""></div>
+        <div class="spare-logo"><img src="images/sachs.jpeg" alt=""></div>
+        <div class="spare-logo"><img src="images/textar.jpeg" alt=""></div>
+
+        <!-- Duplicate for smooth infinite effect -->
+        <div class="spare-logo"><img src="images/bosch.jpeg" alt=""></div>
+        <div class="spare-logo"><img src="images/valeo.jpeg" alt=""></div>
+        <div class="spare-logo"><img src="images/mahle.jpeg" alt=""></div>
+        <div class="spare-logo"><img src="images/ntn.jpeg" alt=""></div>
+        <div class="spare-logo"><img src="images/sachs.jpeg" alt=""></div>
+        <div class="spare-logo"><img src="images/textar.jpeg" alt=""></div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT ARROW -->
+    <button class="spare-arrow right" id="spareRight">&#10095;</button>
+
+  </div>
+
+</section>
+
+<!-- ================= WHY CHOOSE SECTION ================= -->
+
+<section class="why-section">
+
+  <div class="section-header">
+    <div class="red-line"></div>
+    <h2>Why Choose My Mechanic In Gurugram?</h2>
+  </div>
+
+  <div class="why-box">
+
+    <h4>Car Services in Gurugram</h4>
+    <p>
+      In My Mechanic Gurugram, we provide a wide range of excellent car services,
+      including Periodic Services, Denting & Painting, Battery Replacement,
+      Car Spa & Cleaning, AC Service & Repair, Tyre Replacement & Wheelcare,
+      Car Insurance Claims, Car Detailing, Custom Services, Windshields & Glass Replacement,
+      Lights & Fitment, Car Accessories, and more.
+    </p>
+
+    <h4>Multi-Channel Customer Support</h4>
+    <p>
+      Connect with us through email or website chat. Reach out via call at 8398970970
+      or send a text or WhatsApp message using the same number.
+    </p>
+
+    <h4>100% Genuine OEM/OES Spare Parts</h4>
+    <p>
+      My Mechanic performs all its services using genuine spare parts.
+      This has been made possible by our inventory of original spares.
+    </p>
+
+    <h4>Central Service Assistance</h4>
+    <p>
+      Your car inspection and service will be based on your My Mechanic service history.
+      This perk is available at any My Mechanic workshop nationwide,
+      irrespective of your last service location.
+    </p>
+
+    <h4>Committed Service Partner Allocated</h4>
+    <p>
+      Beyond the 24/7 customer service team, a local service partner will be assigned
+      to assist you throughout your car service, providing continuous updates.
+    </p>
+
+    <h4>Well-equipped Workshops with Skilled Professionals</h4>
+    <p>
+      Every My Mechanic service facility in Gurugram is equipped with top-tier
+      service tools and high-end machinery. Our mechanics are trained and responsive
+      to your needs.
+    </p>
+
+  </div>
+
+</section>
+
+<!-- ================= PRICE LIST SECTION ================= -->
+
+<section id="price-list" class="price-section">
+
+  <div class="section-header">
+    <div class="red-line"></div>
+    <h2>Car Services Price List in Gurugram, India 2026</h2>
+  </div>
+
+  <div class="price-table-wrapper">
+
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th>Services Type</th>
+          <th>Price Starts From (₹)</th>
+          <th>Savings</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Car Inspection/Diagnostics</td>
+          <td>499</td>
+          <td>15%</td>
+        </tr>
+
+        <tr>
+          <td>Inspection</td>
+          <td>499</td>
+          <td>25%</td>
+        </tr>
+
+        <tr>
+          <td>Door Glass Replacement</td>
+          <td>850</td>
+          <td>30%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="price-footer">
+      <span>This data was last updated on 6/24/2026</span>
+      <a href="#" class="see-more">SEE MORE</a>
+    </div>
+
+  </div>
+
+</section>
+
+<script src="app.js"></script>
+<div class="sos-btn">
+  <img src="images/sos siren.gif" alt="SOS">
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+  <!-- TOP LINKS SECTION -->
+  <div class="footer-top">
+
+    <div class="footer-column">
+      <h4>ABOUT US</h4>
+      <ul>
+        <li>FAQs</li>
+        <li>Contact Us</li>
+        <li>Terms and Conditions</li>
+        <li>Privacy Policy</li>
+        <li>Customer Grievance Policy</li>
+        <li>My Mechanic Partners</li>
+        <li>Workshop Locator</li>
+        <li>Offers</li>
+        <li>Reviews</li>
+        <li>Directory</li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>OUR SERVICES</h4>
+      <ul>
+        <li>Scheduled Services</li>
+        <li>AC Services</li>
+        <li>Cleaning & Detailing</li>
+        <li>Lights & Fitments</li>
+        <li>Denting Painting</li>
+        <li>Insurance Services</li>
+        <li>Custom Repair</li>
+        <li>Batteries</li>
+        <li>Tyres</li>
+        <li>Detailing Services</li>
+        <li>Windshields & Glass</li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>LUXURY BRANDS</h4>
+      <ul>
+        <li>Mercedes</li>
+        <li>BMW</li>
+        <li>Audi</li>
+        <li>Volvo</li>
+        <li>Mitsubishi</li>
+        <li>Jaguar</li>
+        <li>Porsche</li>
+        <li>Rolls Royce</li>
+        <li>Ferrari</li>
+        <li>Land Rover</li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>POPULAR BRANDS</h4>
+      <ul>
+        <li>Maruti Suzuki</li>
+        <li>Hyundai</li>
+        <li>Honda</li>
+        <li>Toyota</li>
+        <li>Tata</li>
+        <li>Mahindra</li>
+        <li>Chevrolet</li>
+        <li>Fiat</li>
+        <li>Renault</li>
+        <li>Kia</li>
+        <li>Skoda</li>
+        <li>Volkswagen</li>
+      </ul>
+    </div>
+
+  </div>
+
+
+  <!-- BOTTOM SECTION -->
+  <div class="footer-bottom">
+
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="images/car_wrench.png" alt="My Mechanic Logo" class="car-icon">
+        <span>My Mechanic</span>
+      </div>
+      <p>
+        7th Floor, Tower A, Spaze iTech Park,<br>
+        Sohna - Gurgaon Rd, Block S, Sector 49,<br>
+        Gurugram, Haryana 122018
+      </p>
+
+      <div class="social-icons">
+        <a href="#"><img src="images/facebook_icon.png" alt="Facebook"></a>
+        <a href="#"><img src="images/twitter_icon.png" alt="Twitter"></a>
+        <a href="#"><img src="images/instagram_icon.png" alt="Instagram"></a>
+        <a href="#"><img src="images/whatsapp_icon.png" alt="WhatsApp"></a>
+        <a href="#"><img src="images/youtube_icon.png" alt="YouTube"></a>
+      </div>
+    </div>
+
+    <div class="footer-contact">
+      <p><img src="images/mail_icon.png" alt="Email" class="footer-icon"> <strong>Email:</strong> customercare@mymechanic.in</p>
+      <p><img src="images/phone_icon.png" alt="Phone" class="footer-icon"> <strong>Phone:</strong> 9388893888</p>
+      <p><img src="images/calendar_icon.png" alt="Calendar" class="footer-icon"> <strong>Working Days:</strong> Monday - Sunday</p>
+      <p><img src="images/clock_icon.png" alt="Clock" class="footer-icon"> <strong>Working Hours:</strong> 7:00AM - 9:00PM(IST)</p>
+    </div>
+
+  </div>
+
+  <div class="footer-copy">
+    © 2026 MyMechanic Premium Car Service . ALL RIGHTS RESERVED
+  </div>
+
+</footer>
+
+</body>
+</html>
