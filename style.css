@@ -1692,4 +1692,167 @@ form input:focus {
 .loader-wrapper.fade-out {
   opacity: 0;
   visibility: hidden;
+}
+
+/* ================= INTERACTIVE CALL-TO-ACTION CURSORS & HOVERS ================= */
+.available-card,
+.curated-item,
+.summer-card,
+.banner-slide {
+  cursor: pointer;
+}
+
+.banner-slide img {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.banner-slide img:hover {
+  opacity: 0.95;
+}
+
+/* ================= GALLERY SECTION ================= */
+.gallery-section {
+  padding: 80px 5%;
+  background: #ffffff; /* Contrast with the grey sections */
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
+@media (min-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #eaeaea;
+}
+
+.gallery-item:hover {
+  transform: scale(1.03) translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(229, 57, 53, 0.85); /* Red brand overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-overlay span {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border: 2px solid #fff;
+  padding: 8px 18px;
+  border-radius: 30px;
+  transform: translateY(15px);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay span {
+  transform: translateY(0);
+}
+
+/* ================= LIGHTBOX MODAL ================= */
+.lightbox-modal {
+  display: none;
+  position: fixed;
+  z-index: 100000; /* Over everything including loader and headers */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.lightbox-modal.active {
+  display: flex;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: zoom 0.3s ease;
+}
+
+.lightbox-caption {
+  position: absolute;
+  bottom: 50px;
+  color: #ccc;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  width: 100%;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+  color: #e53935; /* Close button red on hover */
+  text-decoration: none;
+}
+
+@keyframes zoom {
+  from {transform: scale(0.85); opacity: 0;}
+  to {transform: scale(1); opacity: 1;}
 }

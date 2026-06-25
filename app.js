@@ -239,45 +239,63 @@ window.addEventListener("load", () => {
   if (active) moveIndicator(active);
 });
 
-/* ================= SERVICE DROPDOWN ================= */
+/* ================= SERVICE DROPDOWN & INTERACTIVE CALL-TO-ACTIONS ================= */
 
 const serviceData = {
-  "Periodic Services": [
+  "periodic": [
     "Basic Service",
     "Standard Service",
     "Comprehensive Service"
   ],
-  "AC Services": [
+  "ac": [
     "AC Gas Refill",
-    "AC Repair",
-    "AC Cleaning"
+    "AC Compressor Repair",
+    "AC Gas Top-Up",
+    "AC Filter Cleaning"
   ],
-  "Car Spa & Cleaning": [
-    "Interior Cleaning",
-    "Exterior Wash",
+  "spa": [
+    "Interior Deep Cleaning",
+    "Exterior Wash & Wax",
     "Full Car Spa"
   ],
-  "Denting & Painting": [
+  "denting": [
     "Full Body Paint",
-    "Scratch Removal",
+    "Scratch & Dent Removal",
     "Panel Repair"
   ],
-  "Battery Services": [
+  "battery": [
     "Battery Replacement",
-    "Battery Checkup"
+    "Battery Health Check"
+  ],
+  "tyre": [
+    "Tyre Replacement",
+    "Wheel Alignment",
+    "Wheel Balancing"
+  ],
+  "detailing": [
+    "Ceramic Coating",
+    "Paint Protection Film (PPF)",
+    "Polishing & Rubbing"
+  ],
+  "insurance": [
+    "Cashless Insurance Claims",
+    "Accidental Repair & Claims"
+  ],
+  "inspection": [
+    "Complete Car Inspection",
+    "Pre-Purchase Inspection",
+    "Engine Diagnostics"
+  ],
+  "windshield": [
+    "Front Windshield Glass",
+    "Rear Windshield Glass",
+    "Door Glass Replacement",
+    "Headlight / Taillight Replacement"
   ]
 };
 
 const serviceCategory = document.getElementById("serviceCategory");
 const serviceType = document.getElementById("serviceType");
-
-// Fill service categories
-for (let category in serviceData) {
-  let option = document.createElement("option");
-  option.value = category;
-  option.textContent = category;
-  serviceCategory.appendChild(option);
-}
 
 // When category changes
 serviceCategory.addEventListener("change", function () {
@@ -294,6 +312,214 @@ serviceCategory.addEventListener("change", function () {
     });
   }
 });
+
+// Helper: Scroll to form and auto-select options
+function redirectToInquireForm(categoryValue, serviceValue = "") {
+  const formSection = document.querySelector(".hero-form");
+  if (!formSection) return;
+
+  // Auto-select category
+  if (categoryValue) {
+    serviceCategory.value = categoryValue;
+    // Trigger change event to populate services dropdown
+    serviceCategory.dispatchEvent(new Event("change"));
+  }
+
+  // Auto-select specific service if provided
+  if (serviceValue) {
+    // Wait slightly for options to populate
+    setTimeout(() => {
+      for (let option of serviceType.options) {
+        if (option.text.toLowerCase() === serviceValue.toLowerCase() ||
+            option.text.toLowerCase().includes(serviceValue.toLowerCase())) {
+          serviceType.value = option.value;
+          break;
+        }
+      }
+    }, 50);
+  }
+
+  // Smooth scroll to hero form
+  formSection.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+// 1. Available Services Click Handlers
+document.querySelectorAll(".available-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const text = card.querySelector("h4").textContent.trim();
+    let category = "";
+    
+    if (text.includes("Car Services")) category = "periodic";
+    else if (text.includes("AC Service")) category = "ac";
+    else if (text.includes("Batteries")) category = "battery";
+    else if (text.includes("Tyres")) category = "tyre";
+    else if (text.includes("Denting")) category = "denting";
+    else if (text.includes("Detailing")) category = "detailing";
+    else if (text.includes("Car Spa")) category = "spa";
+    else if (text.includes("Windshield")) category = "windshield";
+    else if (text.includes("Suspension")) category = "periodic"; // Map suspension to periodic
+    else if (text.includes("Insurance")) category = "insurance";
+
+    redirectToInquireForm(category);
+  });
+});
+
+// 2. Curated Custom Services Click Handlers
+document.querySelectorAll(".curated-item").forEach(item => {
+  item.addEventListener("click", () => {
+    const text = item.querySelector("p").textContent.trim();
+    let category = "";
+    let service = "";
+
+    if (text.includes("Batteries")) {
+      category = "battery";
+      service = "Battery Replacement";
+    } else if (text.includes("Brakes")) {
+      category = "periodic";
+      service = "Standard Service";
+    } else if (text.includes("AC Parts")) {
+      category = "ac";
+      service = "AC Repair";
+    } else if (text.includes("Clutch")) {
+      category = "periodic";
+      service = "Comprehensive Service";
+    } else if (text.includes("Tyres")) {
+      category = "tyre";
+      service = "Tyre Replacement";
+    } else if (text.includes("Suspension")) {
+      category = "periodic";
+      service = "Comprehensive Service";
+    } else if (text.includes("Lights") || text.includes("Glasses") || text.includes("Side Mirror")) {
+      category = "windshield";
+      if (text.includes("Lights")) service = "Headlight / Taillight Replacement";
+      else if (text.includes("Glasses")) service = "Front Windshield Glass";
+      else service = "Door Glass Replacement";
+    } else if (text.includes("Car Spa")) {
+      category = "spa";
+      service = "Full Car Spa";
+    } else if (text.includes("Car Detailing")) {
+      category = "detailing";
+      service = "Ceramic Coating";
+    } else if (text.includes("Body Parts")) {
+      category = "denting";
+      service = "Panel Repair";
+    }
+
+    redirectToInquireForm(category, service);
+  });
+});
+
+// 3. Summer Services Click Handlers
+document.querySelectorAll(".summer-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const text = card.querySelector("h4").textContent.trim();
+    let category = "";
+    let service = "";
+
+    if (text.includes("Bumper Paint")) {
+      category = "denting";
+      service = "Scratch & Dent Removal";
+    } else if (text.includes("Rubbing")) {
+      category = "detailing";
+      service = "Polishing & Rubbing";
+    } else if (text.includes("All Round Spa")) {
+      category = "spa";
+      service = "Full Car Spa";
+    } else if (text.includes("Periodic") || text.includes("Standard")) {
+      category = "periodic";
+      service = "Standard Service";
+    }
+
+    redirectToInquireForm(category, service);
+  });
+});
+
+// 4. Promo Banner Slider Click Handler
+document.querySelectorAll(".banner-slide").forEach(slide => {
+  slide.addEventListener("click", () => {
+    redirectToInquireForm("inspection", "Complete Car Inspection");
+  });
+});
+
+// 5. Price List "SEE MORE" Click Handler
+const seeMoreBtn = document.querySelector(".price-section .see-more");
+if (seeMoreBtn) {
+  seeMoreBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    redirectToInquireForm("periodic");
+  });
+}
+
+// 6. SOS Button Click Handler
+const sosBtn = document.querySelector(".sos-btn");
+if (sosBtn) {
+  sosBtn.addEventListener("click", () => {
+    redirectToInquireForm("inspection", "Engine Diagnostics");
+  });
+}
+
+// 7. Inquire Form WhatsApp Automation Submit Handler
+const inquireForm = document.querySelector(".hero-form form");
+if (inquireForm) {
+  inquireForm.addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent standard page reload submit
+
+    // Get input values
+    const carSelect = document.getElementById("carSelect");
+    const categorySelect = document.getElementById("serviceCategory");
+    const serviceSelect = document.getElementById("serviceType");
+    const phoneInput = document.getElementById("mobileNumber");
+
+    const carText = carSelect.value;
+    const categoryText = categorySelect.options[categorySelect.selectedIndex]?.text || "";
+    const serviceText = serviceSelect.options[serviceSelect.selectedIndex]?.text || "";
+    const phoneNumber = phoneInput.value.trim();
+
+    // Validation checks
+    if (!categorySelect.value) {
+      alert("Please select a service category.");
+      categorySelect.focus();
+      return;
+    }
+    if (!serviceSelect.value) {
+      alert("Please select a specific service.");
+      serviceSelect.focus();
+      return;
+    }
+    if (!carSelect.value) {
+      alert("Please select your car.");
+      carSelect.focus();
+      return;
+    }
+    
+    // Simple mobile number validation (must be 10 digits)
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(phoneNumber)) {
+      alert("Please enter a valid 10-digit mobile number.");
+      phoneInput.focus();
+      return;
+    }
+
+    // Build the WhatsApp message
+    const message = `Hello My Mechanic! 🚗\n\n` +
+      `I would like to inquire about a car service booking.\n\n` +
+      `📌 *Booking Details*:\n` +
+      `• *Car Manufacturer:* ${carText}\n` +
+      `• *Service Category:* ${categoryText}\n` +
+      `• *Service Selected:* ${serviceText}\n` +
+      `• *Customer Mobile:* ${phoneNumber}\n\n` +
+      `Please get back to me with the price estimation and available slots. Thanks!`;
+
+    // Encode text message and redirect
+    const encodedText = encodeURIComponent(message);
+    const whatsappNum = "8826991028";
+    
+    // Redirect to WhatsApp Web/App
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=91${whatsappNum}&text=${encodedText}`;
+    
+    window.open(whatsappUrl, "_blank");
+  });
+}
 
 /* ================= REVIEW SLIDER ================= */
 
@@ -355,4 +581,47 @@ window.addEventListener("load", () => {
       loader.remove();
     }, 400);
   }
-});
+});
+
+// 8. Gallery Lightbox Functionality
+const galleryItems = document.querySelectorAll(".gallery-item");
+const lightbox = document.getElementById("galleryLightbox");
+const lightboxImg = document.getElementById("lightboxImage");
+const lightboxCaption = document.getElementById("lightboxCaption");
+const lightboxClose = document.querySelector(".lightbox-close");
+
+if (galleryItems.length > 0 && lightbox && lightboxImg) {
+  galleryItems.forEach(item => {
+    item.addEventListener("click", () => {
+      const img = item.querySelector("img");
+      if (img) {
+        lightboxImg.src = img.src;
+        if (lightboxCaption) {
+          lightboxCaption.textContent = img.alt || "Workshop Image";
+        }
+        lightbox.classList.add("active");
+      }
+    });
+  });
+
+  // Close when clicking Close (x)
+  if (lightboxClose) {
+    lightboxClose.addEventListener("click", () => {
+      lightbox.classList.remove("active");
+    });
+  }
+
+  // Close when clicking background outside the image content
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox || e.target.classList.contains("lightbox-close")) {
+      lightbox.classList.remove("active");
+    }
+  });
+
+  // Close with Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lightbox.classList.contains("active")) {
+      lightbox.classList.remove("active");
+    }
+  });
+}
