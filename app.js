@@ -8,6 +8,7 @@ const rightArrow = document.getElementById("navRight");
 
 /* ========== Sliding Underline ========== */
 function moveIndicator(link) {
+  if (!link || !indicator) return;
   indicator.style.width = `${link.offsetWidth}px`;
   indicator.style.left = `${link.offsetLeft}px`;
 }
@@ -25,55 +26,44 @@ const observer = new IntersectionObserver(entries => {
           moveIndicator(link);
 
           /* Auto center active tab */
-          container.scrollLeft =
-            link.offsetLeft - container.offsetWidth / 2 + link.offsetWidth / 2;
+          if (container) {
+            container.scrollLeft =
+              link.offsetLeft - container.offsetWidth / 2 + link.offsetWidth / 2;
+          }
         }
       });
     }
   });
-}, { threshold: 0.6 });
+}, { threshold: 0.3, rootMargin: "-75px 0px -40% 0px" });
 
 sections.forEach(section => observer.observe(section));
 
 /* ========== Arrow Scroll ========== */
-leftArrow.addEventListener("click", () => {
-  container.scrollBy({ left: -200, behavior: "smooth" });
-});
+if (leftArrow && rightArrow && container) {
+  leftArrow.addEventListener("click", () => {
+    container.scrollBy({ left: -200, behavior: "smooth" });
+  });
 
-rightArrow.addEventListener("click", () => {
-  container.scrollBy({ left: 200, behavior: "smooth" });
-});
+  rightArrow.addEventListener("click", () => {
+    container.scrollBy({ left: 200, behavior: "smooth" });
+  });
+}
 
 /* ========== Sticky Background Change ========== */
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 100) {
-    scrollNav.classList.add("scrolled");
-  } else {
-    scrollNav.classList.remove("scrolled");
-  }
-});
+if (scrollNav) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+      scrollNav.classList.add("scrolled");
+    } else {
+      scrollNav.classList.remove("scrolled");
+    }
+  });
+}
 
 /* ========== Init indicator position ========== */
 window.addEventListener("load", () => {
   const active = document.querySelector(".scroll-link.active");
   if (active) moveIndicator(active);
-});
-function moveIndicator(link) {
-  indicator.style.width = `${link.offsetWidth}px`;
-  indicator.style.left = `${link.offsetLeft}px`;
-}
-window.addEventListener("load", () => {
-  const active = document.querySelector(".scroll-link.active");
-  if (active) {
-    moveIndicator(active);
-  }
-});
-leftArrow.addEventListener("click", () => {
-  container.scrollBy({ left: -250, behavior: "smooth" });
-});
-
-rightArrow.addEventListener("click", () => {
-  container.scrollBy({ left: 250, behavior: "smooth" });
 });
 const curatedContainer = document.getElementById("curatedContainer");
 const curatedLeft = document.getElementById("curatedLeft");
@@ -229,15 +219,6 @@ if (bannerTrack && bannerSlides.length > 0) {
   updateDots();
   startBanner();
 }
-function moveIndicator(link) {
-  indicator.style.width = `${link.offsetWidth}px`;
-  indicator.style.left = `${link.offsetLeft}px`;
-}
-
-window.addEventListener("load", () => {
-  const active = document.querySelector(".scroll-link.active");
-  if (active) moveIndicator(active);
-});
 
 /* ================= SERVICE DROPDOWN & INTERACTIVE CALL-TO-ACTIONS ================= */
 
@@ -517,7 +498,7 @@ if (inquireForm) {
     // Redirect to WhatsApp Web/App
     const whatsappUrl = `https://api.whatsapp.com/send?phone=91${whatsappNum}&text=${encodedText}`;
     
-    window.open(whatsappUrl, "_blank");
+    window.location.href = whatsappUrl;
   });
 }
 
